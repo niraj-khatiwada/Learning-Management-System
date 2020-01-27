@@ -2,11 +2,12 @@ from django.db import models
 
 from Account.models import Account
 
+from .validators import validate_name, validate_designation
 # Create your models here.
 class Manager(models.Model):
-    name = models.CharField(max_length=100, validators=[validate_name])
-    designation = models.CharField(max_length=50, validators=[validate_deisgnation])
-    profile_image = models.ImageField(upload_to='/media/manager', null= True, blank= True)
+    name = models.CharField(max_length=100, validators=[validate_name], verbose_name='Full Name')
+    designation = models.CharField(max_length=50, validators=[validate_designation])
+    profile_image = models.ImageField(upload_to='media/manager', null= True, blank= True)
     description = models.TextField(blank=True, null=True)
     user = models.OneToOneField(Account, on_delete = models.CASCADE)
 
@@ -21,4 +22,4 @@ class Manager(models.Model):
         self.name = self.name.capitalize()
         self.designation = self.designation.capitalize()
         self.description = self.description.capitalize()
-        return super(Manager, self).save(force_insert, force_update)
+        super(Manager, self).save(force_insert, force_update)
