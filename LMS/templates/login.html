@@ -1,0 +1,21 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %}Home{% endblock %}
+
+{% block 'content' %}
+<section class="hero section-adjust">
+    <div class="welcome">
+        <i class="fas fa-graduation-cap"></i>
+        <h2 class="welcome-text">Welcome</h2>
+    </div>
+    <div class="login-signup">
+        <form action="#" method="POST" class="form-control">
+            {% csrf_token %}
+           
+            <input type="email" id="email" name="email" placeholder="Email">
+            <br>
+            <button class="login-btn">Log In</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

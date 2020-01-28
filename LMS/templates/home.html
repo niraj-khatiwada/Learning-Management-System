@@ -1,0 +1,16 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %}Home{% endblock %}
+
+{% block 'content' %}
+<section class="hero section-adjust">
+    <div class="welcome">
+        <i class="fas fa-graduation-cap"></i>
+        <h2 class="welcome-text">Welcome</h2>
+    </div>
+    <div class="login-signup">
+        <a href="{% url 'login' %}" class="login-link"><button class="login">Login</button></a>
+        <a href="{% url 'signup' %}" class="login-link"><button class="login">Signup</button></a>
+    </div>
+</section>
+{% endblock %}

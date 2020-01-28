@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import Home
+from .views import Home, Signin, Signup
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,5 +23,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home.as_view() , name= 'home'),
+    path('login/', Signin.as_view(), name='login'),
+    path('signup/', Signup.as_view(), name='signup'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

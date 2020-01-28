@@ -1,3 +1,133 @@
-.hello{
-    color: red;
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Source+Sans+Pro&display=swap');
+
+
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+:root{
+    --primarFont: 'Josefin Sans', sans-serif;
+    --secondaryFont: 'Source Sans Pro', sans-serif;
+    --primaryColor: #007f97;
+    --primaryLetterSpacing: 0.5rem;
+    --secondaryLetterSpacing: 0.2rem;
+    --transition: all 0.2s ease-in-out;
+}
+/* Body Resets */
+img{
+    width: 100%;
+}
+/* Body Resets End*/
+
+
+/* Global */
+button{
+    width: 150px;
+    padding: 1rem;
+    font-size: 1rem;
+    background: var(--primaryColor);
+    border: none;
+    color: white;
+
+}
+
+button:active{
+    transform: scale(0.9);
+}
+
+.section-adjust{
+    padding: 1rem;
+}
+
+/* Global End */
+
+/* Header */
+/* Nav */
+header{
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),url('Hero/Hero.jpg')center/cover fixed no-repeat;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.logo{
+    width:20vh;
+}
+
+.social{
+   padding: 2rem; 
+   font-size: 2rem;
+}
+
+.social > i{
+    margin: 0.1rem;
+    transition: var(--transition);
+}
+.social>i:hover{
+    transform: scale(1.5);
+}
+/* Nav End */
+/* Home */
+.hero{
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-gap: 1rem;  
+}
+
+.welcome{
+    text-align: center;
+    color: white;
+    font-family: var(--primarFont);
+    font-size: 2rem;
+}
+
+.welcome > i{
+    font-size: 3rem; 
+    color: black;  
+}
+.welcome-text{
+    background: -webkit-linear-gradient(blue,purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.login-signup{
+    box-shadow: 5px 5px 10px black;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3));
+    padding: 10rem 5rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+/* Home End */
+
+/* Login */
+.login-btn{
+    margin:1rem 3rem;
+}
+
+.form-control{
+    width: 100%;
+    text-align: center;
+    /* height: 100%; */
+}
+
+#email{
+    width: 100%;
+    height: 5vh;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: --;
+}
+/* Login End */
+
+/* Header End*/
+
