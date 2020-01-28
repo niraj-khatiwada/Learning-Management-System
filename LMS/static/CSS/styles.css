@@ -120,12 +120,13 @@ header{
     /* height: 100%; */
 }
 
-#email{
+.form{
     width: 100%;
     height: 5vh;
     padding: 1rem;
     font-size: 1rem;
-    font-family: --;
+    font-family: var(--primarFont);
+    margin: 1rem auto;
 }
 /* Login End */
 
