@@ -9,12 +9,17 @@
         <h2 class="welcome-text">Welcome</h2>
     </div>
     <div class="login-signup">
-        <form action="#" method="POST" class="form-control">
+        <form action="{% url 'login' %}" method="POST" class="form-list">
             {% csrf_token %}
+            {% for message in messages %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+            {% endfor %}
             <input type="email" id="email" name="email" placeholder="Email" class="form">
-            <input type="password" id="password", name="Password" placeholder="Password" class="form">
+            <input type="password" id="password", name="password" placeholder="Password" class="form">
             <br>
-            <button class="login-btn">Log In</button>
+            <button class="login-btn" type="submit">Log In</button>
         </form>
     </div>
 </section>

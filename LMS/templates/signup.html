@@ -9,10 +9,10 @@
         <h2 class="welcome-text">Welcome</h2>
     </div>
     <div class="login-signup">
-        <form action="#" method="POST">
+        <form action="#" method="POST" class="form-list">
             {% csrf_token %}
-            Email
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" class="form" placeholder="Send your email to Manager to Signup">
+            <button class="signup-btn">Send</button>
         </form>
     </div>
 </section>

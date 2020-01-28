@@ -1,16 +1,38 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, View, DetailView, ListView
+from django.shortcuts import render,redirect
+from django.contrib import messages
+from Account.models import Account
+
+from django.http import HttpResponse
+from django.contrib.auth import login, logout,authenticate
+
+def home(request):
+    return render(request, 'home.html')
 
 
-class Home(TemplateView):
-    template_name = 'home.html'
-
-class Signin(View):
-    template_name = 'login.html'
-    def get(self, request, *args, **kwargs):
+def signin(request):
+    if request.method == 'GET':
         return render(request, 'login.html')
-   
-class Signup(View):
-    template_name = 'signup.html'
-    def get(self, request, *args, **kwargs):
-        return render(request, 'signup.html')
+    else:
+        email_ = request.POST.get("email")
+        password_ = request.POST.get("password")
+        user = authenticate(email = email_, password = password_)
+        if user is not None:
+            login(request, user)
+            if request.user.is_manager:
+                return render(request, 'Manager/dashboard.html')
+            elif request.user.is_teacher:
+                return render(request, 'Teacher/dashboard.html')
+            elif request.user.is_student:
+                return render(request, 'Student/dashboard.html')
+            else:
+                messages.error(request, 'There was some problem. Please log in again')
+                return redirect('login')
+        else:
+            messages.error(request, 'Username or password is incorrect')
+            return redirect('login')
+
+
+    
+
+def signup(request):
+    return render(request, 'signup.html')   

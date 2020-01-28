@@ -16,6 +16,7 @@
     --transition: all 0.2s ease-in-out;
 }
 /* Body Resets */
+
 img{
     width: 100%;
 }
@@ -46,13 +47,17 @@ button:active{
 /* Header */
 /* Nav */
 header{
-    min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),url('Hero/Hero.jpg')center/cover fixed no-repeat;
+    width: 100%;
+    position: relative;
+
 }
 .navbar{
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
+
     
 }
 
@@ -75,7 +80,12 @@ header{
 /* Nav End */
 /* Home */
 .hero{
-    height: 80vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),url('Hero/Hero.jpg')center/cover fixed no-repeat;
+    height: 100vh;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -110,11 +120,11 @@ header{
 /* Home End */
 
 /* Login */
-.login-btn{
+.login-btn, .signup-btn {
     margin:1rem 3rem;
 }
 
-.form-control{
+.form-list{
     width: 100%;
     text-align: center;
     /* height: 100%; */

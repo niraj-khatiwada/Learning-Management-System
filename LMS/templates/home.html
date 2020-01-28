@@ -9,6 +9,11 @@
         <h2 class="welcome-text">Welcome</h2>
     </div>
     <div class="login-signup">
+        {% for message in  messages %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% endfor %}
         <a href="{% url 'login' %}" class="login-link"><button class="login">Login</button></a>
         <a href="{% url 'signup' %}" class="login-link"><button class="login">Signup</button></a>
     </div>
