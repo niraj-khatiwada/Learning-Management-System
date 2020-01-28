@@ -19,11 +19,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             if request.user.is_manager:
-                return render(request, 'Manager/dashboard.html')
+                return redirect('manager_dashboard')
             elif request.user.is_teacher:
-                return render(request, 'Teacher/dashboard.html')
+                return redirect('teacher_dashboard')
             elif request.user.is_student:
-                return render(request, 'Student/dashboard.html')
+                return redirect('student_dashboard')
             else:
                 messages.error(request, 'There was some problem. Please log in again')
                 return redirect('login')

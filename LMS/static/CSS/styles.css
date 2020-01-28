@@ -16,6 +16,9 @@
     --transition: all 0.2s ease-in-out;
 }
 /* Body Resets */
+body{
+    background: #f3f9fb;
+}
 
 img{
     width: 100%;
@@ -51,8 +54,8 @@ header{
     position: relative;
 
 }
+
 .navbar{
-    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,6 +142,22 @@ header{
     margin: 1rem auto;
 }
 /* Login End */
+/* Side Nav */
+
+.side-nav{
+    position: fixed;
+    top: 20vh;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* Side Nav End */
+
+/* Manager  */
+
+
+/* Manager End */
 
 /* Header End*/
 
