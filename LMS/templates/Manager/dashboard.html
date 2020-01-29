@@ -2,8 +2,13 @@
 
 {% block 'title' %}Manager Dashboard{% endblock %}
 
-{% block 'content' %}
-    {% include "master/partials.html" %}
+{% block 'topic' %}
+    <h1 class="topic">Dashboard</h1>
+{% endblock  %}
 
+{% block 'side-nav-included' %}
+    {% include "master/side-nav-included.html" %}
+{% endblock %}
+{% block 'rest-of-content' %}
 
 {% endblock %}

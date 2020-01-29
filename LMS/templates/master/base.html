@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block 'title' %} {% endblock %}</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'fontawesome-free-5.12.0-web/css/all.css' %}">
     <!-- Favicon -->
@@ -16,10 +15,13 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
 </head>
 <body>
     <header>
         <section class="navbar section-adjust">
+
             <div class="logo">
                 <img src="{% static 'Logo/Screenshot_2020-01-28 Logo Maker Used By 2 3 Million Startups(1).jpg' %}" alt="" class="logo-image">
             </div>
@@ -29,9 +31,19 @@
                 <i class="fab fa-twitter"></i>
             </div>
         </section>
-        {% block 'content' %}
-        {% endblock %}
+        {% block 'content' %}        {% endblock  %}
+          
+        {% block 'topic' %}{% endblock %}
+        <section class="container-fluid">
+            <section class="side-nav-included col-md-2 position-fixed">
+                {% block 'side-nav-included' %}{% endblock  %}
+            </section>
+            <section class="row">
+                <section class="rest-of-content col-md-10 offset-2">
+                    {% block 'rest-of-content' %}{% endblock %} 
+                </section>
+            </section>
+        </section>
     </header>
-
 </body>
 </html>

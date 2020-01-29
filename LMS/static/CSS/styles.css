@@ -5,8 +5,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
-
+.list-group-item:focus{
+    outline: 1px auto purple;
+}
 :root{
     --primarFont: 'Josefin Sans', sans-serif;
     --secondaryFont: 'Source Sans Pro', sans-serif;
@@ -17,12 +20,22 @@
 }
 /* Body Resets */
 body{
-    background: #f3f9fb;
+    background: #fbfbfb;
 }
 
 img{
     width: 100%;
 }
+
+/* section, div{
+    border: 2px solid red;
+}
+
+h1,h2,h3{
+    border: 2px solid green;
+} */
+
+
 /* Body Resets End*/
 
 
@@ -42,16 +55,17 @@ button:active{
 }
 
 .section-adjust{
-    padding: 1rem;
+    padding: 15px;
 }
-
+.topic{
+    text-align: center;
+}
 /* Global End */
 
 /* Header */
 /* Nav */
 header{
     width: 100%;
-    position: relative;
 
 }
 
@@ -117,7 +131,7 @@ header{
     background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3));
     padding: 100px 40px;
     display: flex;
-    gap: 1rem;
+    gap: 1rem;  
     flex-direction: column;
 }
 /* Home End */
@@ -142,22 +156,26 @@ header{
     margin: 1rem auto;
 }
 /* Login End */
-/* Side Nav */
 
-.side-nav{
-    position: fixed;
-    top: 20vh;
-    left: 0;
-    bottom: 0;
-    right: 0;
+/* Inside MAnager's, Teacher's, Student's Dashboardand similar */
+.side-nav-included{
+   margin: 10rem 0;
 }
 
-/* Side Nav End */
+.container-fluid{
+    padding-left: 0;
+}
 
-/* Manager  */
+.rest-of-content{
+    padding: 1rem
+}
 
+.add > a >  i{
+    font-size: 2rem;
+    color: purple;
+}
+/* Inside MAnager's, Teacher's, Student's Dashboardand similar */
 
-/* Manager End */
 
 /* Header End*/
 
