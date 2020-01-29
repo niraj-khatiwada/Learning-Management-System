@@ -65,7 +65,7 @@ header{
 }
 
 .logo{
-    width:20vh;
+    width:15vh;
 }
 
 .social{
@@ -115,7 +115,7 @@ header{
 .login-signup{
     box-shadow: 5px 5px 10px black;
     background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3));
-    padding: 10rem 5rem;
+    padding: 100px 40px;
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -134,7 +134,7 @@ header{
 }
 
 .form{
-    width: 100%;
+    width: 80%;
     height: 5vh;
     padding: 1rem;
     font-size: 1rem;
