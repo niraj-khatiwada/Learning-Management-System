@@ -10,5 +10,12 @@
     {% include "master/side-nav-included.html" %}
 {% endblock %}
 {% block 'rest-of-content' %}
+<section class="col-md-4 offset-3">
+    {% for message in messages %}
+    <div class="alert alert-danger">
+         {{ message }}
+    </div>
+    {% endfor %}
+</section>
 
 {% endblock %}

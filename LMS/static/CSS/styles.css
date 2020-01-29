@@ -158,22 +158,30 @@ header{
 /* Login End */
 
 /* Inside MAnager's, Teacher's, Student's Dashboardand similar */
-.side-nav-included{
-   margin: 10rem 0;
-}
 
 .container-fluid{
     padding-left: 0;
 }
 
 .rest-of-content{
-    padding: 1rem
+    padding:0 1rem;
 }
 
 .add > a >  i{
     font-size: 2rem;
     color: purple;
 }
+
+.utils{
+    height: 10rem;
+}
+
+.add_teacher_form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 /* Inside MAnager's, Teacher's, Student's Dashboardand similar */
 
 

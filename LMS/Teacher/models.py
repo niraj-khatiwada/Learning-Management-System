@@ -24,5 +24,4 @@ class Teacher(models.Model):
     def save(self, force_insert= False, force_update= False):
         self.name = self.name.capitalize()
         self.designation = self.designation.capitalize()
-        self.description = self.description.capitalize()
         super(Teacher, self).save(force_insert, force_update)

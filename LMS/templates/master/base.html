@@ -31,9 +31,12 @@
                 <i class="fab fa-twitter"></i>
             </div>
         </section>
-        {% block 'content' %}        {% endblock  %}
+        {% block 'content' %}{% endblock  %}
           
         {% block 'topic' %}{% endblock %}
+        <section class="utils">
+            {% block 'utils' %}{% endblock %}
+        </section>
         <section class="container-fluid">
             <section class="side-nav-included col-md-2 position-fixed">
                 {% block 'side-nav-included' %}{% endblock  %}

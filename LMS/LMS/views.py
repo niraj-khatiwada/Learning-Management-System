@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from Account.models import Account
 
-from django.http import HttpResponse
 from django.contrib.auth import login, logout,authenticate
+
 
 def home(request):
     return render(request, 'home.html')

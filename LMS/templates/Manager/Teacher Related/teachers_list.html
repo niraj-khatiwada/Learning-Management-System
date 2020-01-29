@@ -5,15 +5,17 @@
 {% block 'topic' %}
     <h1 class="topic">Teachers</h1>
 {% endblock  %}
+{% block 'utils' %}
+<section class="add col-md-1 offset-11">
+  <a href="{% url 'add_teacher_form' %}" class="add-link"><i class="fas fa-plus-circle"></i></a>
 
+  </i>
+</section>
+{% endblock  %}
 {% block 'side-nav-included' %}
   {% include 'master/side-nav-included.html' %}
 {% endblock  %}
 
 {% block 'rest-of-content' %}
-  <section class="add col-md-1 offset-11">
-      <a href="{% url 'add_teacher_form' %}" class="add-link"><i class="fas fa-plus-circle"></i></a>
-
-      </i>
-  </section>
+ 
 {% endblock  %}   
