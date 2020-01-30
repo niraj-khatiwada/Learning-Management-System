@@ -10,24 +10,20 @@ from django.utils.timezone import now
 # Create your models here
 
 class AccountManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, password=None):
         if not email:
             raise ValueError('Email must be provided')
-        if not username:
-            raise ValueError('Username must be provided')
         user = self.model(
         email = self.normalize_email(email),
-        username = username
         )  
         user.set_password(password)
         user.save(using= self._db)
         return user
 
 
-    def create_staffuser(self, email, username, password):
+    def create_staffuser(self, email, password):
         user = self.create_user(
             email =email,
-            username = username,
             password = password.password,
 
         )
@@ -35,10 +31,9 @@ class AccountManager(BaseUserManager):
         user.save(using = self._db  )
         return user
 
-    def create_superuser(self, email, username, password):
+    def create_superuser(self, email, password):
         user = self.create_user(
             email = email,
-            username = username,
             password = password,
            
         )
@@ -49,7 +44,6 @@ class AccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email           =models.EmailField(max_length=255, unique=True, verbose_name='Email')
-    username =      models.CharField(max_length=255, unique=True, help_text='Username can have "Numbers A-Z a-z _ - ." only', validators=[validate_username])
     is_manager =    models.BooleanField(default=False, verbose_name='Manager')
     is_teacher =    models.BooleanField(default=False,verbose_name= 'Teacher')
     is_student =    models.BooleanField(default=False, verbose_name='Student')
@@ -67,7 +61,7 @@ class Account(AbstractBaseUser):
         return self.email
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = []
 
     objects = AccountManager()
 

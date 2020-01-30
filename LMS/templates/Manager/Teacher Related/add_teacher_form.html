@@ -13,11 +13,12 @@
 {% block 'rest-of-content' %}
   <section class="col-md-4 offset-3">
       <form  class="add_teacher_form" method="POST">
-          {% csrf_token %}
-          {{ AddTeacherForm }}
-          <br>
-          <button class="btn btn-primary btn-block" type="submit">Submit</button>
-
+          
+        {{ AddTeacherForm }}
+        <input type="text" name="username", placeholder="Give an username" class="form-control">
+        <br>
+        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+        {% csrf_token %}
       </form>
   </section>
 {% endblock  %}   

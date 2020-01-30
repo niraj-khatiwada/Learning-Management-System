@@ -12,7 +12,7 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ['is_manager', 'is_teacher', 'is_student','is_staff','is_admin','is_suspended']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('username',)}),
+        ('Personal info', {'fields': ()}),
         ('Permissions', {'fields': ('is_manager', 'is_teacher', 'is_student','is_staff','is_admin','is_suspended', )}),
     )
     
