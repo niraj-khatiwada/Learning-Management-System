@@ -1,0 +1,48 @@
+{% extends 'master/teacher_dashboard.html' %}
+ {% load static %}
+
+ {% block 'contents' %}
+   {% include 'includes/message.html' %}
+       <div class="uk-card uk-card-default uk-card-small uk-card-body">
+                <div class="uk-grid-column-small uk-child-width-1-3@s" uk-grid>
+                            {% for t in class %}
+                              <div>
+                                <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                               <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <div class="uk-width-auto">
+                                            <img class="uk-border-circle" width="40" height="40" src="{% static 'img/teacher.png' %}">
+
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <h5 class="uk-margin-remove-bottom"><a href="#"> {{t.name}}</a></h5>
+                                            <p class="uk-text-meta uk-margin-remove-top">Code: - {{t.code}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                             <div class="uk-card-footer">
+                                 <a href="{% url 'class_details' t.code %}" class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom" url="#">View</span></a>
+                            </div>
+                       </div>
+                    </div>
+                           {% endfor %}
+                </div>
+            </div>
+
+
+<!-- Modal box -->
+<div id="class-modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Create Class</h2>
+        <hr class="uk-divider-icon">
+        <form method="post" class="uk-form-stacked">
+        {{form.as_p}}
+         {% csrf_token %}
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="submit">Save</button>
+        </p>
+        </form>
+    </div>
+</div>
+ {% endblock %}

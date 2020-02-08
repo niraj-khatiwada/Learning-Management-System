@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS System</title>
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+ {% block  'nav' %}
+
+ {% endblock %}
+ <div class="uk-container">
+{% block 'contents' %}
+
+{% endblock %}
+ </div>
+<script src="{% static 'js/uikit.min.js' %}"></script>
+<script src="{% static 'js/uikit-icons.min.js' %}"></script>
+<script src="{% static 'js/uikit-icons.min.js' %}"></script>
+<script src="{% static 'js/js.js' %}"></script>
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<div class="uk-width-1-4@m sidenav">
+              <h3 class="title"> Hello Nepal</h3>
+
+            <ul class="menu-item">
+                <li>
+                    <a href="#">Dashboard <span uk-icon="icon: thumbnails"></span></a>
+                </li>
+
+                <li>
+                    <a href="#">Classes <span uk-icon="icon: comments"></span></a>
+                </li>
+                  <li>
+                    <a href="#">Notices <span uk-icon="icon: bell"></span></a>
+                </li>
+
+                <li>
+                    <a href="{% url 'manage_student' %}">Students<span uk-icon="icon: users"></span></a>
+                </li>
+                <li>
+                    <a href="{% url 'manage_teacher' %}">Teacher<span uk-icon="icon: user"></span></a>
+                </li>
+                <li>
+                    <a href="#">Admistration <span uk-icon="icon: user"></span></a>
+                </li>
+                <hr class="uk-divider-icon">
+                <li>
+                    <a href="#">Setting <span uk-icon="icon: cog"></span></a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout<span uk-icon="icon: lock"></span></a>
+                </li>
+
+            </ul>
+        </div>

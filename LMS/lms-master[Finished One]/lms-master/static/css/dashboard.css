@@ -1,0 +1,73 @@
+*{
+font-family: 'Raleway', sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p,a,span{
+ font-family: 'Raleway', sans-serif;
+}
+
+ a{
+  color:black;
+ }
+ a:hover{
+   text-decoration:none;
+   color:blue;
+ }
+
+html{
+  background-color:#F0F0F0;
+}
+
+.sidenav{
+ padding-top:2%;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+   overflow-x: hidden; /* Disable horizontal scroll */
+}
+.content{
+  margin-left:25%;
+  margin-top:2%;
+}
+
+.menu-item{
+ list-style:none;
+}
+.menu-item>li{
+  display:block;
+  padding:10px;
+ }
+ .menu-item>li>a{
+  font-weight:bold;
+ }
+
+
+ .menu-item>li>a>span{
+   margin-left:4%;
+   float:right;
+ }
+
+ .dashbutton{
+  margin:20px;
+  border-radius:20px;
+  padding:25 25px !important;
+ }
+.profile{
+  height:200px !important;
+  width:auto;
+}
+.about_list>li{
+ list-style:none;
+ padding:5px;
+}
+.box{
+ border-radius:8px !important;
+}
+
+.my_text_area{
+ background-color:#F0F0F0 !important;
+ width:95%;
+ margin-left:5%;
+ border:1px solid black !important;
+}

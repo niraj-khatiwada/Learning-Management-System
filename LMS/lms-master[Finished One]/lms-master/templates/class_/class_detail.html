@@ -1,0 +1,69 @@
+{% extends 'master/teacher_dashboard.html' %}
+ {% load static %}
+ {% load filename %}
+{% load extension %}
+ {% block 'contents' %}
+   {% include 'includes/message.html' %}
+    {% include 'includes/class_nav.html' %}
+    <div class="uk-container">
+            <div uk-grid>
+                <div class="uk-width-3-4@m">
+                    {% if not request.user.is_student %}
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small box">
+                        <form method="POST" action="{% url 'stream_class' %}" enctype="multipart/form-data">
+                            <textarea class="uk-textarea" id="stream" name="content">
+
+                            </textarea>
+                            {% csrf_token %}
+                            <hr class="uk-divider-icon">
+                            <input type="file" class="uk-file" name="file">
+                            <input type="hidden" value="{{class.id}}" name="class_id">
+                            <button class="uk-button uk-button-primary" style="float:right;">Save</button>
+                        </form>
+                    </div>
+                   {% endif %}
+                   {% for s in stream %}
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin">
+                       {% autoescape off %} {{s.content}} {% endautoescape %}
+                        {% if s.file %}
+                        <a href="{{MEDIA_URL}}{{s.file.url}}" download>
+                            {% if s.file|extension == 'pdf' %}
+                                <img src="{% static 'img/pdf.png' %}" style="height:40px;width:auto;">&nbsp;&nbsp;{{s.file|filename}}
+                            {% elif s.file|extension == 'docx' %}
+                                <img src="{% static 'img/word.jpg' %}" style="height:40px;width:auto;">&nbsp;&nbsp;{{s.file|filename}}
+                            {% elif s.file|extension == 'ppt' %}
+                                <img src="{% static 'img/ppt.jpg' %}" style="height:40px;width:auto;">&nbsp;&nbsp;{{s.file|filename}}
+                            {% else %}
+                                <img src="{% static 'img/folder.png' %}" style="height:40px;width:auto;">&nbsp;&nbsp;{{s.file|filename}}
+                            {% endif %}
+
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% for c in comment %}
+                    <div class="uk-card uk-margin" style="margin-left:2%;">
+                        {% if c.stream_id == s.id %}
+                            {{c.comment}}
+                            <br/>
+                         by:{{c.user}}
+                        {% endif %}
+                        <hr>
+                    </div>
+                    {% endfor %}
+                    <div class="uk-card uk-margin">
+                        Comment
+                        <form method="post" action="{% url 'comment' %}">
+                            <textarea class="uk-textarea my_text_area" name="comment" rows="2">
+                            </textarea>
+                                {% csrf_token %}
+                            <input type="hidden" value="{{s.id}}" name="stream_id">
+                            <button type="submit" class="uk-button uk-button-success" style="float:right;">Save</button>
+                        </form>
+                    </div>
+                    <hr class="uk-divider-icon">
+                   {% endfor %}
+                </div>
+             {% include 'includes/class_side_bar.html' %}
+            </div>
+    </div>
+ {% endblock %}

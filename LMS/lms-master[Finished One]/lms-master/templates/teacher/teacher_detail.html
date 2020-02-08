@@ -1,0 +1,26 @@
+{% extends 'master/dashboard.html' %}
+ {% load static %}
+ {% block 'contents' %}
+     <div uk-grid>
+        {% include 'includes/dashboard_sidenav.html' %}
+        <div class="uk-width-3-4@m content">
+            <h3>{{teacher.name}}</h3>
+             {% include 'includes/message.html' %}
+            <div class="uk-card uk-card-default uk-card-small uk-card-body">
+               {% if teacher.profile %}
+                    <img src="{{MEDIA_URL}}{{teacher.profile.url}}" class="profile" uk-img>
+                {% else %}
+                     <img src="{% static 'img/teacher.png' %}" class="profile" uk-img>
+                {% endif %}
+                <h4>About</h4>
+                <hr>
+                <ul class="about_list">
+                    <li><span uk-icon="receiver"></span> : {{teacher.contact_no}}</li>
+                    <li><span uk-icon="rss"></span> : {% if teacher.department %}{{teacher.department}} {% else %} Not set yet {% endif %}</li>
+                    <li><span uk-icon="comment"></span> : {% if teacher.subject %}{{teacher.subject}} {% else %} Not set yet {% endif %}</li>
+                </ul>
+            </div>
+
+        </div>
+   </div>
+ {% endblock %}

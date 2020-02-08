@@ -1,0 +1,26 @@
+*{
+font-family: 'Raleway', sans-serif;
+}
+html{
+ background-image:url('../img/bg.jpg');
+}
+.logincard{
+  opacity:0.8;
+  margin:auto;
+  margin-top:15%;
+}
+.inputcard{
+  opacity:0.8;
+  margin:auto;
+  margin-top:10% !important;
+}
+label{
+display:block !important;
+}
+
+
+@media screen and (max-width: 500px) {
+ .logincard{
+    margin-top:30%;
+ }
+}

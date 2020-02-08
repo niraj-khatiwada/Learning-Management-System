@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS System</title>
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+<nav class="uk-navbar-container" uk-navbar uk-sticky>
+    <div class="uk-navbar-left">
+        <div class="uk-container">
+            <h3>Welcome, {{request.user}}</h3>
+        </div>
+    </div>
+
+    <div class="uk-navbar-right">
+       <div class="uk-container">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <button class="uk-button uk-button-primary dashbutton"><a href="{% url 'teacher_dashboard' %}" style="color:white;">Dashboard<span uk-icon="icon: triangle-down"></span></a></button>
+
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active"><a href="#class-modal" uk-toggle>Create Class</a></li>
+                            <li><a href="#">Setting</a></li>
+                            <hr>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+       </div>
+
+    </div>
+</nav>
+{% block 'contents' %}
+
+{% endblock %}
+<script src="{% static 'js/uikit.min.js' %}"></script>
+<script src="{% static 'js/uikit-icons.min.js' %}"></script>
+<script src="{% static 'js/js.js' %}"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ <script>
+  tinymce.init({
+  selector: 'textarea#stream',
+  height: 500,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table paste code help wordcount'
+  ],
+  toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tiny.cloud/css/codepen.min.css'
+  ]
+});
+  </script>
+</body>
+</html>
+

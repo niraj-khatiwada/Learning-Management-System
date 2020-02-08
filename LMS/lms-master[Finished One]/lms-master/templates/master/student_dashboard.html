@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS System</title>
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+<nav class="uk-navbar-container" uk-navbar uk-sticky>
+    <div class="uk-navbar-left">
+        <div class="uk-container">
+            <h3>Welcome, {{request.user}}</h3>
+        </div>
+    </div>
+
+    <div class="uk-navbar-right">
+       <div class="uk-container">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <button class="uk-button uk-button-primary dashbutton"><a href="{% url 'student_dashbaord' %}" style="color:white;"> Dashboard <span uk-icon="icon: triangle-down"></span></a></button>
+
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a href="#">Setting</a></li>
+                            <hr>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+       </div>
+
+    </div>
+</nav>
+  <div class="uk-card uk-card-default">
+        <div class="uk-container">
+            <form method="get" action="{% url 'search' %}">
+                <input class="uk-input uk-input-large uk-form-success" name="key" value="{{key}}" placeholder="Search class........"required>
+            </form>
+        </div>
+    </div>
+{% include 'includes/message.html' %}
+{% block 'contents' %}
+
+
+{% endblock %}
+<script src="{% static 'js/uikit.min.js' %}"></script>
+<script src="{% static 'js/uikit-icons.min.js' %}"></script>
+<script src="{% static 'js/js.js' %}"></script>
+</body>
+</html>
+

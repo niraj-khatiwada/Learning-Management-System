@@ -1,0 +1,70 @@
+{% extends 'master/teacher_dashboard.html' %}
+ {% load static %}
+
+ {% block 'contents' %}
+   {% include 'includes/message.html' %}
+    {% include 'includes/class_nav.html' %}
+    <div class="uk-container">
+            <div uk-grid>
+                <div class="uk-width-3-4@m">
+                    <h3>Request Students</h3>
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small box">
+                       {% if request_student %}
+                        <table class="uk-table uk-table-striped">
+                        {% for s in request_student %}
+                            <tr>
+                                <td>
+                                      {% if s.profile %}
+                                        <img class="uk-border-circle" width="30" height="30" src="{{MEDIA_URL}}{{s.profile.url}}">
+                                      {% else %}
+                                        <img class="uk-border-circle" width="30" height="30" src="{% static 'img/teacher.png' %}">
+                                      {% endif %}
+                                </td>
+                                <td>
+                                    {{s.name}}
+                                </td>
+                                <td>{{s.user.email}}</td>
+                                <td>
+                                <a href="{% url 'requestAccept' class.id s.id %}" class="uk-button uk-button-danger uk-button-small">Accept</a>
+                                <a id = 'student_remove_from_class_' url="{% url 'remove_student' class.id s.id %}" class="uk-button uk-button-danger uk-button-small">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                        {% else %}
+                            <h4>No Request</h4>
+                        {% endif %}
+                    </div>
+                      <hr class="uk-divider-icon">
+                <h3>All Students</h3>
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small box">
+                       {% if student %}
+                        <table class="uk-table uk-table-striped">
+                        {% for s in student %}
+                            <tr>
+                                <td>
+                                      {% if s.profile %}
+                                        <img class="uk-border-circle" width="30" height="30" src="{{MEDIA_URL}}{{s.profile.url}}">
+                                      {% else %}
+                                        <img class="uk-border-circle" width="30" height="30" src="{% static 'img/teacher.png' %}">
+                                      {% endif %}
+                                </td>
+                                <td>
+                                    {{s.name}}
+                                </td>
+                                <td>{{s.user.email}}</td>
+                                <td>
+
+                                <a id="student_remove_from_class" url="{% url 'remove_student' class.id s.id %}" href="#" class="uk-button uk-button-danger uk-button-small">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                       {% else %}
+                         <h3>No Students </h3>
+                        {% endif %}
+                    </div>
+
+                </div>
+             {% include 'includes/class_side_bar.html' %}
+            </div>
+    </div>
+ {% endblock %}

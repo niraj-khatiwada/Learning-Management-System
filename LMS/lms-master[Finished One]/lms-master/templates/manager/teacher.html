@@ -1,0 +1,70 @@
+{% extends 'master/dashboard.html' %}
+{% load static %}
+
+ {% block 'contents' %}
+     <div uk-grid>
+        {% include 'includes/dashboard_sidenav.html' %}
+        <div class="uk-width-3-4@m content">
+            <h3>Teacher</h3>
+            {% include 'includes/message.html' %}
+            <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                <h4>Create Teacher</h4>
+                <hr class="uk-divider-icon">
+                <form class="uk-form-stacked" method="post">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-email">Email</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-stacked-email" name="email" type="text" placeholder="example@mail.com">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-name">Full Name</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" name="name" id="form-stacked-name" type="text" placeholder="Dipendra km">
+                        </div>
+                    </div>
+                    {% csrf_token %}
+
+                    <button class="uk-button uk-button-primary" style="float:right;">Save</button>
+                </form>
+            </div>
+            <div class="uk-card uk-card-default uk-margin uk-card-small uk-card-body">
+                <div class="uk-grid-column-small uk-child-width-1-3@s" uk-grid>
+                            {% for t in teacher %}
+                                     <div>
+                                        <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                                               <div class="uk-card-header">
+                                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            {% if t.profile %}
+                                                                <img class="uk-border-circle" width="40" height="40" src="{{MEDIA_URL}}{{t.profile.url}}">
+                                                            {% else %}
+                                                                <img class="uk-border-circle" width="40" height="40" src="{% static 'img/teacher.png' %}">
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="uk-width-expand">
+                                                            <h5 class="uk-margin-remove-bottom"><a href="{% url 'teacher_details' t.id %}"> {{t.name}}</a></h5>
+                                                            <p class="uk-text-meta uk-margin-remove-top">+977 - {{t.contact_no}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             <div class="uk-card-footer">
+                                                 {% if t.user.is_suspended %}
+                                                   <a id="js-release-confirm" href="#" class="uk-button uk-button-primary uk-button-small" url="{% url 'unsuspend_teacher' t.user_id %}">Release</a>
+                                                {% else %}
+                                                 <a id="js-modal-confirm" href="#" class="uk-button uk-button-danger uk-button-small" url="{% url 'suspend_teacher' t.user_id %}">Suspend</a>
+                                                 {% endif %}
+                                                 <a id="teacher-delete-confirm" href="#" class="uk-button uk-button-danger uk-button-small" url="{% url 'delete_teacher' t.user_id %}"><span uk-icon="icon: trash"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                           {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+   </div>
+
+
+ {% endblock %}
