@@ -1,1 +1,1 @@
-# Learning Management System
+# (Python/Django)Learning Management System
