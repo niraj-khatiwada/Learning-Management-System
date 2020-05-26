@@ -146,3 +146,5 @@ LOGOUT_REDIRECT_URL = 'signin'
 
 
 django_heroku.settings(locals())
+
+CSRF_COOKIE_HTTPONLY = False
