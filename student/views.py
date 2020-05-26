@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -23,7 +24,7 @@ class StudentView(View):
             student_id=getLogedInStudentId(request.user.id), is_accept=True)]
         all_class = Class.objects.filter(id__in=all_id)
         if request.user.is_firstLogin:
-            return redirect(reverse('password_change'))
+            return redirect(reverse_lazy('password_change'))
         else:
             return render(request, self.template_name, {'class': all_class})
 
@@ -42,7 +43,7 @@ def searchclass(reqeust):
         }
         return render(reqeust, 'student/search.html', context)
     else:
-        return redirect(reverse('student_dashbaord'))
+        return redirect(reverse_lazy('student_dashbaord'))
 
 
 login_required(login_url='signin')
@@ -57,10 +58,10 @@ def classJoin(request, class_id):
             c.save()
             messages.add_message(request, messages.SUCCESS,
                                  'Your request to join the class has been sent')
-            return redirect(reverse('student_dashbaord'))
+            return redirect(reverse_lazy('student_dashbaord'))
         except Exception as e:
             messages.add_message(
                 request, messages.ERROR, 'sorry we could not sent your request right now : '+str(e))
-            return redirect(reverse('student_dashbaord'))
+            return redirect(reverse_lazy('student_dashbaord'))
     else:
-        return redirect(reverse('student_dashbaord'))
+        return redirect(reverse_lazy('student_dashbaord'))

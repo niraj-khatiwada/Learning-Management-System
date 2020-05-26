@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -44,7 +45,7 @@ class TeacherView(View):
             'teacher': Teacher.objects.get(id=getLoginTeacherId(request.user.id))
         }
         if request.user.is_firstLogin:
-            return redirect(reverse('password_change'))
+            return redirect(reverse_lazy('password_change'))
         else:
             return render(request, self.template_name, context)
 
@@ -62,8 +63,8 @@ class TeacherView(View):
             data.save()
             messages.add_message(request, messages.SUCCESS,
                                  'successfully created')
-            return redirect(reverse('teacher_dashboard'))
+            return redirect(reverse_lazy('teacher_dashboard'))
         else:
             messages.add_message(request, messages.ERROR,
                                  'sorry could not create right now')
-            return redirect(reverse('teacher_dashboard'))
+            return redirect(reverse_lazy('teacher_dashboard'))

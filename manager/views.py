@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.utils.decorators import method_decorator
@@ -34,7 +35,7 @@ class FirstManager(View):
     def get(self, request, *arg, **kwargs):
         try:
             a = Manager.objects.get(user_id=request.user.id)
-            return redirect(reverse('manager_dashboard'))
+            return redirect(reverse_lazy('manager_dashboard'))
         except:
             context = {
                 'form': self.form()
@@ -50,7 +51,7 @@ class FirstManager(View):
             user = Account.objects.get(id=request.user.id)
             user.is_firstLogin = False
             user.save()
-            return redirect(reverse('manager_dashboard'))
+            return redirect(reverse_lazy('manager_dashboard'))
         else:
             return render(request, self.template_name, {'form': myform})
 
@@ -61,7 +62,7 @@ class ManagerView(View):
     @method_decorator(login_required, 'signin')
     def get(self, request, *arg, **kwargs):
         if request.user.is_firstLogin:
-            return redirect(reverse('first_manager'))
+            return redirect(reverse_lazy('first_manager'))
         else:
             return render(request, self.template_name)
 
@@ -94,7 +95,7 @@ class TeacherView(View):
             teacher.save()
             messages.add_message(request, messages.SUCCESS,
                                  'Teacher Account is created successfully')
-            return redirect(reverse('manage_teacher'))
+            return redirect(reverse_lazy('manage_teacher'))
         except Exception as e:
             messages.add_message(request, messages.ERROR, str(e))
             return redirect('manage_teacher')
@@ -147,10 +148,10 @@ def delete_teacher(request, id):
         t = Account.objects.get(id=id)
         t.delete()
         messages.add_message(request, messages.SUCCESS, 'Successfully Delete')
-        return redirect(reverse('manage_teacher'))
+        return redirect(reverse_lazy('manage_teacher'))
     except:
         messages.add_message(request, messages.ERROR, 'some error occured')
-        return redirect(reverse('manage_teacher'))
+        return redirect(reverse_lazy('manage_teacher'))
 
 
 def suspend_teacher(request, user_id):
@@ -161,11 +162,11 @@ def suspend_teacher(request, user_id):
         else:
             messages.add_message(
                 request, messages.ERROR, 'could not suspend right now plase try again later')
-        return redirect(reverse('manage_teacher'))
+        return redirect(reverse_lazy('manage_teacher'))
     except:
         messages.add_message(request, messages.ERROR,
                              'could not suspend right now plase try again later')
-        return redirect(reverse('manage_teacher'))
+        return redirect(reverse_lazy('manage_teacher'))
 
 
 def unsuspend_teacher(request, user_id):
@@ -176,11 +177,11 @@ def unsuspend_teacher(request, user_id):
         else:
             messages.add_message(
                 request, messages.ERROR, 'could not release right now plase try again later')
-        return redirect(reverse('manage_teacher'))
+        return redirect(reverse_lazy('manage_teacher'))
     except:
         messages.add_message(request, messages.ERROR,
                              'could not release right now plase try again later')
-        return redirect(reverse('manage_teacher'))
+        return redirect(reverse_lazy('manage_teacher'))
 
 
 def delete_student(request, id):
@@ -188,10 +189,10 @@ def delete_student(request, id):
         t = Account.objects.get(id=id)
         t.delete()
         messages.add_message(request, messages.SUCCESS, 'Successfully Delete')
-        return redirect(reverse('manage_student'))
+        return redirect(reverse_lazy('manage_student'))
     except:
         messages.add_message(request, messages.ERROR, 'some error occured')
-        return redirect(reverse('manage_student'))
+        return redirect(reverse_lazy('manage_student'))
 
 
 def suspend_student(request, user_id):
@@ -202,11 +203,11 @@ def suspend_student(request, user_id):
         else:
             messages.add_message(
                 request, messages.ERROR, 'could not suspend right now plase try again later')
-        return redirect(reverse('manage_student'))
+        return redirect(reverse_lazy('manage_student'))
     except:
         messages.add_message(request, messages.ERROR,
                              'could not suspend right now plase try again later')
-        return redirect(reverse('manage_student'))
+        return redirect(reverse_lazy('manage_student'))
 
 
 def unsuspend_student(request, user_id):
@@ -217,8 +218,8 @@ def unsuspend_student(request, user_id):
         else:
             messages.add_message(
                 request, messages.ERROR, 'could not release right now plase try again later')
-        return redirect(reverse('manage_student'))
+        return redirect(reverse_lazy('manage_student'))
     except:
         messages.add_message(request, messages.ERROR,
                              'could not release right now plase try again later')
-        return redirect(reverse('manage_student'))
+        return redirect(reverse_lazy('manage_student'))

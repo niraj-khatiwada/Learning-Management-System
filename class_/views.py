@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect, reverse
+from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from class_.models import Class, ClassJoined, Stream, Comment
 from student.models import Student
@@ -22,7 +23,7 @@ def requeststudent(request, id):
 def classRemove(request, id):
     class_ = Class.objects.get(id=id)
     class_.delete()
-    return redirect(reverse('teacher_dashboard'))
+    return redirect(reverse_lazy('teacher_dashboard'))
 
 
 def requestAccept(request, class_id, student_id):
@@ -92,4 +93,3 @@ class ClassDetailView(DetailView):
         context['stream'] = s
         context['comment'] = c
         return context
-

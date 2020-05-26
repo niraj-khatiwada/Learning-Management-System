@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
@@ -19,11 +19,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             if request.user.is_manager:
-                return redirect(reverse('manager_dashboard'))
+                return redirect(reverse_lazy('manager_dashboard'))
             elif request.user.is_teacher:
-                return redirect(reverse('teacher_dashboard'))
+                return redirect(reverse_lazy('teacher_dashboard'))
             elif request.user.is_student:
-                return redirect(reverse('student_dashbaord'))
+                return redirect(reverse_lazy('student_dashbaord'))
             else:
                 pass
         else:
@@ -54,4 +54,4 @@ class PasswordChangeManager(View):
         else:
             messages.add_message(request, messages.ERROR,
                                  'password does not match')
-            return redirect(reverse('password_change'))
+            return redirect(reverse_lazy('password_change'))
