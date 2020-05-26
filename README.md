@@ -4,7 +4,7 @@ Consists of 3 types of users, Manager, Teachers and Students. Manager is created
 
 ### Add Teacher and Students from manager account 
 <img src="gitImages/add_teachers.png" />
-<img src="gitImages/add_students.png" />
+<img src="gitImages/add_student.png" />
 
 ### Teacher Dashboard 
 <img src='gitImages/teacher_dashboard.png' />
@@ -19,3 +19,5 @@ Consists of 3 types of users, Manager, Teachers and Students. Manager is created
 ### Student dashboard
 Students search through the class and send request to join the class. Teacher verifies that the student sending request is registered for the class.
 <img src="gitImages/student_dashboard.png" />
+
+...
