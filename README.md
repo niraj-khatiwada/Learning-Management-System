@@ -2,6 +2,10 @@
 
 Consists of 3 types of users, Manager, Teachers and Students. Manager is created by admin and Teachers and Students can only be added by Manager. When new teacher or student is added by manager, they will receive an email to change the password and log in to the system.
 
+### Uses custom user model so only requires email to register and login.
+<img src="gitImages/login.png" />
+
+
 ### Add Teacher and Students from manager account 
 <img src="gitImages/add_teachers.png" />
 <img src="gitImages/add_student.png" />
