@@ -12,7 +12,7 @@ idna==2.9
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 numpy==1.18.4
-Pillow==7.1.2
+Pillow==9.3.0
 psycopg2==2.8.5
 pycodestyle==2.6.0
 python-decouple==3.3
